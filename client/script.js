@@ -1,92 +1,46 @@
-const url = 'http://localhost:3000/users';
+const users = [
+  { firstName: 'Anna', lastName: 'Andersson', username: 'anna_a', category: 'admin' },
+  { firstName: 'Erik', lastName: 'Eriksson', username: 'erik_e', category: 'member' },
+  { firstName: 'Maria', lastName: 'Johansson', username: 'maria_j', category: 'guest' },
+  { firstName: 'Johan', lastName: 'Svensson', username: 'johan_s', category: 'moderator' },
+  { firstName: 'Lisa', lastName: 'Nilsson', username: 'lisa_n', category: 'subscriber' },
+  { firstName: 'Karl', lastName: 'Lindberg', username: 'karl_l', category: 'admin' },
+  { firstName: 'Sara', lastName: 'Bergström', username: 'sara_b', category: 'member' },
+  { firstName: 'Peter', lastName: 'Larsson', username: 'peter_l', category: 'guest' },
+  { firstName: 'Emma', lastName: 'Karlsson', username: 'emma_k', category: 'moderator' },
+  { firstName: 'Magnus', lastName: 'Olsson', username: 'magnus_o', category: 'subscriber' }
+];
 
-window.addEventListener('load', fetchData);
 
-function fetchData() {
-  fetch(url)
-    .then((result) => result.json())
-    .then((users) => {
-      if (users.length > 0) {
-        let html = `<ul class="w-3/4 my-3 mx-auto flex flex-wrap gap-2 justify-center">`;
-        users.forEach((user) => {
-          html += `
-        <li
-          class="bg-${user.color}-200 basis-1/4 text-${user.color}-900 p-2 rounded-md border-2 border-${user.color}-400 flex flex-col justify-between">
-          <h3>${user.firstName} ${user.lastName}</h3>
-          <p>Användarnamn: ${user.username}</p>
-          <div>
-            <button
-              class="border border-${user.color}-300 hover:bg-white/100 rounded-md bg-white/50 p-1 text-sm mt-2" onclick="setCurrentUser(${user.id})">
-              Ändra
-            </button>
-            <button class="border border-${user.color}-300 hover:bg-white/100 rounded-md bg-white/50 p-1 text-sm mt-2" onclick="deleteUser(${user.id})">
-              Ta bort
-            </button>
-          </div>
-        </li>`;
-        });
-        html += `</ul>`;
-
-        const listContainer = document.getElementById('listContainer');
-        listContainer.innerHTML = '';
-        listContainer.insertAdjacentHTML('beforeend', html);
-      }
-    });
+function showUserDetails(index) {
+  const user = users[index];
+  const userDetails = document.getElementById('userDetails');
+  userDetails.innerHTML = `
+    <p><strong>First Name:</strong> ${user.firstName}</p>
+    <p><strong>Last Name:</strong> ${user.lastName}</p>
+    <p><strong>Username:</strong> ${user.username}</p>
+    <p><strong>Category:</strong> ${user.category}</p>
+  `;
 }
 
-function setCurrentUser(id) {
-  console.log('current', id);
+function renderUsers() {
+  const userListContainer = document.getElementById('userListContainer');
 
-  fetch(`${url}/${id}`)
-    .then((result) => result.json())
-    .then((user) => {
-      console.log(user);
-      userForm.firstName.value = user.firstName;
-      userForm.lastName.value = user.lastName;
-      userForm.color.value = user.color;
-      userForm.username.value = user.username;
+  const html = `
+    <ul class="userList">
+      ${users
+        .map(
+          (user, index) => `
+        <li class="userListItem" onclick="showUserDetails(${index})">
+          ${user.firstName} ${user.lastName}
+        </li>
+      `
+        )
+        .join('')}
+    </ul>
+  `;
 
-      localStorage.setItem('currentId', user.id);
-    });
+  userListContainer.innerHTML = html;
 }
 
-function deleteUser(id) {
-  console.log('delete', id);
-  fetch(`${url}/${id}`, { method: 'DELETE' }).then((result) => fetchData());
-}
-
-userForm.addEventListener('submit', handleSubmit);
-
-function handleSubmit(e) {
-  e.preventDefault();
-  const serverUserObject = {
-    firstName: '',
-    lastName: '',
-    username: '',
-    color: ''
-  };
-  serverUserObject.firstName = userForm.firstName.value;
-  serverUserObject.lastName = userForm.lastName.value;
-  serverUserObject.username = userForm.username.value;
-  serverUserObject.color = userForm.color.value;
-
-  const id = localStorage.getItem('currentId');
-  if (id) {
-    serverUserObject.id = id;
-  }
-
-  const request = new Request(url, {
-    method: serverUserObject.id ? 'PUT' : 'POST',
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify(serverUserObject)
-  });
-
-  fetch(request).then((response) => {
-    fetchData();
-
-    localStorage.removeItem('currentId');
-    userForm.reset();
-  });
-}
+renderUsers();
