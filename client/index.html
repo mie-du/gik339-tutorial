@@ -3,35 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Användarformulär</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <title>Användarhantering</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Användarformulär</h1>
+    <header class="page-header">
+      <h1>Användarhantering</h1>
+      <button type="button" class="btn btn-add" onclick="addUser()">+ Lägg till användare</button>
+    </header>
+
     <main class="container">
       <div class="left">
-        <form id="userForm" class="collapsible">
+        <form id="userForm" class="hidden">
+          <h2 id="formTitle">Lägg till användare</h2>
           <input type="hidden" id="userId" name="userId" />
-          <div>
+          <div class="form-group">
             <label for="firstName">Förnamn</label>
             <input type="text" id="firstName" name="firstName" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="lastName">Efternamn</label>
             <input type="text" id="lastName" name="lastName" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="username">Användarnamn</label>
             <input type="text" id="username" name="username" />
           </div>
-          <div>
-            <label for="imageUrl">Bild-URL (avatar)</label>
+          <div class="form-group">
+            <label for="imageUrl">Avatar-URL</label>
             <input type="url" id="imageUrl" name="imageUrl" placeholder="https://example.com/avatar.jpg" />
           </div>
-          <div>
+          <div class="form-group">
             <label for="category">Kategori</label>
             <select id="category" name="category">
               <option value="admin">Administratör</option>
@@ -41,16 +43,19 @@
               <option value="subscriber">Prenumerant</option>
             </select>
           </div>
-          <div>
-            <button type="submit">Skicka</button>
-            <button type="reset">Återställ</button>
-            <button type="button" onclick="cancelEdit()">Avbryt</button>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Spara</button>
+            <button type="reset" class="btn btn-secondary">Återställ</button>
+            <button type="button" class="btn btn-danger" onclick="cancelEdit()">Avbryt</button>
           </div>
         </form>
-        <div class="user-card" id="userDetails"></div>
+        <div id="userDetails" class="user-card"></div>
       </div>
-      <div class="right user-list" id="userListContainer"></div>
+      <div class="right">
+        <div id="userListContainer" class="user-list"></div>
+      </div>
     </main>
+
     <script src="script.js"></script>
   </body>
 </html>
