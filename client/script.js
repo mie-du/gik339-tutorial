@@ -41,6 +41,7 @@ function showUserDetails(index) {
   const userForm = document.getElementById('userForm');
 
   userForm.classList.add('hidden');
+  userDetails.classList.remove('hidden');
 
   // Set active class on list item
   const listItems = document.querySelectorAll('.user-list-item');
