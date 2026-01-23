@@ -19,6 +19,10 @@ function addUser() {
   const userForm = document.getElementById('userForm');
   const userDetails = document.getElementById('userDetails');
 
+  // Deactivate any selected list item
+  const listItems = document.querySelectorAll('.user-list-item');
+  listItems.forEach((item) => item.classList.remove('active'));
+
   document.getElementById('formTitle').textContent = 'Lägg till användare';
   document.getElementById('userId').value = '';
   document.getElementById('firstName').value = '';
