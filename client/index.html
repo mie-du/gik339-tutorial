@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>User Manager</title>
+    <title>Användarregistrering</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen">
     <div class="min-h-screen flex flex-col">
       <header class="bg-white/10 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-6 py-6">
-          <h1 class="text-4xl font-bold text-white">User Manager</h1>
+          <h1 class="text-4xl font-bold text-white">Användarhantering</h1>
         </div>
       </header>
 
@@ -23,7 +23,7 @@
               class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6 text-white space-y-4 hidden">
               <input type="hidden" id="userId" name="userId" />
               <div>
-                <label for="firstName" class="block text-sm font-semibold mb-2">First Name</label>
+                <label for="firstName" class="block text-sm font-semibold mb-2">Förnamn</label>
                 <input
                   type="text"
                   id="firstName"
@@ -31,7 +31,7 @@
                   class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
               </div>
               <div>
-                <label for="lastName" class="block text-sm font-semibold mb-2">Last Name</label>
+                <label for="lastName" class="block text-sm font-semibold mb-2">Efternamn</label>
                 <input
                   type="text"
                   id="lastName"
@@ -39,7 +39,7 @@
                   class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
               </div>
               <div>
-                <label for="username" class="block text-sm font-semibold mb-2">Username</label>
+                <label for="username" class="block text-sm font-semibold mb-2">Användarnamn</label>
                 <input
                   type="text"
                   id="username"
@@ -47,7 +47,7 @@
                   class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
               </div>
               <div>
-                <label for="imageUrl" class="block text-sm font-semibold mb-2">Avatar URL</label>
+                <label for="imageUrl" class="block text-sm font-semibold mb-2">Avatar-URL</label>
                 <input
                   type="url"
                   id="imageUrl"
@@ -56,34 +56,34 @@
                   class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
               </div>
               <div>
-                <label for="category" class="block text-sm font-semibold mb-2">Category</label>
+                <label for="category" class="block text-sm font-semibold mb-2">Kategori</label>
                 <select
                   id="category"
                   name="category"
                   class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
-                  <option value="admin" class="bg-slate-900">Admin</option>
-                  <option value="member" class="bg-slate-900">Member</option>
-                  <option value="guest" class="bg-slate-900">Guest</option>
+                  <option value="admin" class="bg-slate-900">Administratör</option>
+                  <option value="member" class="bg-slate-900">Medlem</option>
+                  <option value="guest" class="bg-slate-900">Gäst</option>
                   <option value="moderator" class="bg-slate-900">Moderator</option>
-                  <option value="subscriber" class="bg-slate-900">Subscriber</option>
+                  <option value="subscriber" class="bg-slate-900">Prenumerant</option>
                 </select>
               </div>
               <div class="flex gap-3 pt-4">
                 <button
                   type="submit"
                   class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition">
-                  Save
+                  Spara
                 </button>
                 <button
                   type="reset"
                   class="flex-1 bg-white/20 hover:bg-white/30 text-white font-semibold py-2 rounded-lg transition">
-                  Reset
+                  Återställ
                 </button>
                 <button
                   type="button"
                   onclick="cancelEdit()"
                   class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-300 font-semibold py-2 rounded-lg transition">
-                  Cancel
+                  Avbryt
                 </button>
               </div>
             </form>
