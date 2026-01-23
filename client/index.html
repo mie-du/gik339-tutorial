@@ -3,45 +3,104 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Användarformulär</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>User Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <h1>Användarformulär</h1>
-    <main class="container">
-      <div class="left">
-        <form id="userForm">
-          <div>
-            <label for="firstName">Förnamn</label>
-            <input type="text" id="firstName" name="firstName" />
+  <body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen">
+    <div class="min-h-screen flex flex-col">
+      <header class="bg-white/10 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-6">
+          <h1 class="text-4xl font-bold text-white">User Manager</h1>
+        </div>
+      </header>
+
+      <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Form & Card Section -->
+          <div class="space-y-6">
+            <form
+              id="userForm"
+              class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6 text-white space-y-4 hidden">
+              <input type="hidden" id="userId" name="userId" />
+              <div>
+                <label for="firstName" class="block text-sm font-semibold mb-2">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label for="lastName" class="block text-sm font-semibold mb-2">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label for="username" class="block text-sm font-semibold mb-2">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label for="imageUrl" class="block text-sm font-semibold mb-2">Avatar URL</label>
+                <input
+                  type="url"
+                  id="imageUrl"
+                  name="imageUrl"
+                  placeholder="https://example.com/avatar.jpg"
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+              </div>
+              <div>
+                <label for="category" class="block text-sm font-semibold mb-2">Category</label>
+                <select
+                  id="category"
+                  name="category"
+                  class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                  <option value="admin" class="bg-slate-900">Admin</option>
+                  <option value="member" class="bg-slate-900">Member</option>
+                  <option value="guest" class="bg-slate-900">Guest</option>
+                  <option value="moderator" class="bg-slate-900">Moderator</option>
+                  <option value="subscriber" class="bg-slate-900">Subscriber</option>
+                </select>
+              </div>
+              <div class="flex gap-3 pt-4">
+                <button
+                  type="submit"
+                  class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-lg transition">
+                  Save
+                </button>
+                <button
+                  type="reset"
+                  class="flex-1 bg-white/20 hover:bg-white/30 text-white font-semibold py-2 rounded-lg transition">
+                  Reset
+                </button>
+                <button
+                  type="button"
+                  onclick="cancelEdit()"
+                  class="flex-1 bg-red-500/20 hover:bg-red-500/30 text-red-300 font-semibold py-2 rounded-lg transition">
+                  Cancel
+                </button>
+              </div>
+            </form>
+            <div
+              id="userDetails"
+              class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6 text-white"></div>
           </div>
-          <div>
-            <label for="lastName">Efternamn</label>
-            <input type="text" id="lastName" name="lastName" />
+
+          <!-- Users List Section -->
+          <div class="lg:col-span-2">
+            <div
+              id="userListContainer"
+              class="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6"></div>
           </div>
-          <div>
-            <label for="username">Användarnamn</label>
-            <input type="text" id="username" name="username" />
-          </div>
-          <div>
-            <label for="category">Kategori</label>
-            <select id="category" name="category">
-              <option value="admin">Administratör</option>
-              <option value="member">Medlem</option>
-              <option value="guest">Gäst</option>
-              <option value="moderator">Moderator</option>
-              <option value="subscriber">Prenumerant</option>
-            </select>
-          </div>
-          <div>
-            <button type="submit">Skicka</button>
-            <button type="reset">Återställ</button>
-          </div>
-        </form>
-        <div class="user-card" id="userDetails"></div>
-      </div>
-      <div class="right user-list" id="userListContainer"></div>
-    </main>
+        </div>
+      </main>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
