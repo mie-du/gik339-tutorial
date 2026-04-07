@@ -1,3 +1,4 @@
+/* Exempeldata, en array av användare */
 const users = [
   { id: 1, firstName: 'Anna', lastName: 'Andersson', username: 'anna_a', category: 'admin', imageUrl: '' },
   { id: 2, firstName: 'Erik', lastName: 'Eriksson', username: 'erik_e', category: 'member', imageUrl: '' },
@@ -10,3 +11,8 @@ const users = [
   { id: 9, firstName: 'Emma', lastName: 'Karlsson', username: 'emma_k', category: 'moderator', imageUrl: '' },
   { id: 10, firstName: 'Magnus', lastName: 'Olsson', username: 'magnus_o', category: 'subscriber', imageUrl: '' }
 ];
+
+/* Stödfunktion för framtida funktionalitet */
+function getInitials(user) {
+  return `${user.firstName?.[0] ?? ''}${user.lastName?.[0] ?? ''}`.toUpperCase();
+}

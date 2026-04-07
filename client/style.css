@@ -1,3 +1,4 @@
+/* Fördefinerad CSS för att det ska bli trevligt att arbeta med applikationen. Inspireras, men kopiering rakt av till era projekt kommer *inte* att godkännas. Ni får använda egen CSS, men ni ska använda CSS-ramverk också. Jag kommer att visa exempel i slutet av tutorialen.  */
 :root {
   --primary-color: #4b2582;
   --danger-color: #dc2626;

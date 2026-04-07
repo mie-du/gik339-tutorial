@@ -3,6 +3,11 @@
   "editor.formatOnSave": true,
   "editor.wordWrap": "wordWrapColumn",
   "html.format.wrapAttributes": "force-aligned",
-  "editor.minimap.maxColumn": 80,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.trailingComma": "none",
+  "prettier.singleQuote": true,
+  "prettier.bracketSameLine": true,
+  "prettier.semi": true,
+  "prettier.printWidth": 80,
+  "editor.wordWrapColumn": 80
 }
