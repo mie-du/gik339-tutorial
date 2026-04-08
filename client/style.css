@@ -249,11 +249,14 @@ body {
 }
 
 .user-detail {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-sm) 0;
   border-bottom: 1px solid #f0ebf5;
+}
+
+.user-detail:not(.hidden) {
+  display: flex;
 }
 
 .user-detail:last-child {
