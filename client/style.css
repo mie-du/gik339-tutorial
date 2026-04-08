@@ -24,7 +24,7 @@ body {
   background-color: #f5f5f5;
 }
 
-/* Header */
+/* *** Header *** */
 .page-header {
   max-width: 1200px;
   margin: 0 auto var(--space-lg);
@@ -40,7 +40,7 @@ body {
   margin: 0;
 }
 
-/* Container */
+/* *** Container *** */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -61,12 +61,12 @@ body {
   padding: var(--space-md);
 }
 
-/* Hidden utility */
+/* *** Utility *** */
 .hidden {
   display: none !important;
 }
 
-/* Form */
+/* *** Formulär *** */
 #userForm {
   display: flex;
   flex-direction: column;
@@ -111,7 +111,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* Buttons */
+/* *** Knappar *** */
 .btn {
   padding: var(--space-sm) var(--space-md);
   border: none;
@@ -146,7 +146,7 @@ body {
   color: #fff;
 }
 
-/* User List */
+/* *** Användarlista *** */
 .user-list-items {
   list-style: none;
   display: flex;
@@ -191,7 +191,7 @@ body {
   font-size: 0.875rem;
 }
 
-/* User Card */
+/* *** Användardetaljer *** */
 .user-card {
   background: linear-gradient(135deg, #faf8fc 0%, #fff 100%);
   border: 1px solid #e8e0f0;
@@ -278,7 +278,7 @@ body {
   border-top: 1px solid #e8e0f0;
 }
 
-/* Category badges */
+/* *** Kategoritaggar *** */
 .user-category {
   display: inline-block;
   padding: 0.25rem 0.75rem;
