@@ -10,5 +10,5 @@
   "prettier.semi": true,
   "prettier.printWidth": 80,
   "editor.wordWrapColumn": 80,
-  "editor.fontLigatures": false
+  "editor.fontLigatures": "liga"
 }
