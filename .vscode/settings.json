@@ -9,5 +9,6 @@
   "prettier.bracketSameLine": true,
   "prettier.semi": true,
   "prettier.printWidth": 80,
-  "editor.wordWrapColumn": 80
+  "editor.wordWrapColumn": 80,
+  "editor.fontLigatures": "liga"
 }
