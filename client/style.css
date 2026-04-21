@@ -1,4 +1,5 @@
 /* Fördefinerad CSS för att det ska bli trevligt att arbeta med applikationen. Inspireras, men kopiering rakt av till era projekt kommer *inte* att godkännas. Ni får använda egen CSS, men ni ska använda CSS-ramverk också. Jag kommer att visa exempel i slutet av tutorialen.  */
+
 :root {
   --primary-color: #4b2582;
   --danger-color: #dc2626;
@@ -63,14 +64,17 @@ body {
 
 /* *** Utility *** */
 .hidden {
-  display: none !important;
+  display: none;
 }
 
 /* *** Formulär *** */
 #userForm {
-  display: flex;
   flex-direction: column;
   gap: var(--space-md);
+}
+
+#userForm:not(.hidden) {
+  display: flex;
 }
 
 #userForm h2 {
@@ -249,14 +253,11 @@ body {
 }
 
 .user-detail {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-sm) 0;
   border-bottom: 1px solid #f0ebf5;
-}
-
-.user-detail:not(.hidden) {
-  display: flex;
 }
 
 .user-detail:last-child {
