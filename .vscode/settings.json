@@ -10,5 +10,6 @@
   "prettier.semi": true,
   "prettier.printWidth": 80,
   "editor.wordWrapColumn": 80,
-  "editor.fontLigatures": "liga"
+  "editor.fontLigatures": "liga",
+  "editor.inlineSuggest.enabled": false
 }
