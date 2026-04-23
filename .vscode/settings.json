@@ -11,5 +11,7 @@
   "prettier.printWidth": 80,
   "editor.wordWrapColumn": 80,
   "editor.fontLigatures": "liga",
-  "editor.inlineSuggest.enabled": false
+  "editor.inlineSuggest.enabled": false,
+  "editor.parameterHints.enabled": false,
+  "editor.suggestOnTriggerCharacters": false
 }
