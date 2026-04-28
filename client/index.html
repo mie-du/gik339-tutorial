@@ -11,7 +11,7 @@
   <body>
     <header class="page-header">
       <h1>Användarhantering</h1>
-      <button type="button" class="btn btn-add">
+      <button type="button" class="btn btn-add" onclick="showForm()">
         <span>+</span>
         <span>Lägg till användare</span>
       </button>
@@ -55,7 +55,9 @@
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Spara</button>
             <button type="reset" class="btn btn-secondary">Återställ</button>
-            <button type="button" class="btn btn-danger">Avbryt</button>
+            <button type="button" class="btn btn-danger" onclick="hideForm()">
+              Avbryt
+            </button>
           </div>
         </form>
         <div id="userDetails" class="hidden user-card"></div>

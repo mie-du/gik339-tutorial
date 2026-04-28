@@ -83,3 +83,12 @@ const users = [
 ];
 
 /* *** Nedan skriver vi resten av koden. *** */
+function showForm() {
+  const userFormElement = document.getElementById('userForm');
+  userFormElement.classList.remove('hidden');
+}
+
+function hideForm() {
+  const userFormElement = document.getElementById('userForm');
+  userFormElement.classList.add('hidden');
+}
