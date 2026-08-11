@@ -92,3 +92,36 @@ function hideForm() {
   const userFormElement = document.getElementById('userForm');
   userFormElement.classList.add('hidden');
 }
+
+function renderUsers() {
+  const userListContainerElement = document.getElementById('userListContainer');
+
+  let html = `<ul class="user-list-items">`;
+
+  users.forEach((user) => {
+    html += `<li class="user-list-item" onclick="showUserDetails(${user.id})">
+          <span class="user-name">${user.firstName} ${user.lastName}</span>
+          <span class="user-username">@${user.username}</span>
+          <span class="user-category category-${user.category}">${user.category}</span>
+      </li>`;
+  });
+
+  html += '</ul>';
+
+  const html2 = `<ul class="user-list-items">
+  ${users
+    .map((user) => {
+      return `<li class="user-list-item" onclick="showUserDetails(${user.id})">
+          <span class="user-name">${user.firstName} ${user.lastName}</span>
+          <span class="user-username">@${user.username}</span>
+          <span class="user-category category-${user.category}">${user.category}</span>
+      </li>`;
+    })
+    .join('')}
+  
+  </ul>`;
+
+  userListContainerElement.innerHTML = html2;
+}
+
+renderUsers();
