@@ -83,14 +83,38 @@ const users = [
 ];
 
 /* *** Nedan skriver vi resten av koden. *** */
-function showForm() {
+function showForm(id) {
   const userFormElement = document.getElementById('userForm');
   userFormElement.classList.remove('hidden');
+
+  if (id !== undefined && id !== null) {
+    const user = users.find((user) => Number(user.id) === Number(id));
+
+    document.getElementById('formTitle').textContent =
+      `Redigera användare: ${user.firstName} ${user.lastName}`;
+    userForm.userId.value = user.id;
+    userForm.firstName.value = user.firstName;
+    userForm.lastName.value = user.lastName;
+    userForm.username.value = user.username;
+    userForm.imageUrl.value = user.imageUrl;
+    userForm.category.value = user.category;
+  } else {
+    document.getElementById('formTitle').textContent = 'Lägg till användare';
+    userForm.userId.value = null;
+    userForm.reset();
+  }
+
+  document.getElementById('userDetails').classList.add('hidden');
 }
 
 function hideForm() {
   const userFormElement = document.getElementById('userForm');
   userFormElement.classList.add('hidden');
+
+  if (userForm.userId.value) {
+    document.getElementById('userDetails').classList.remove('hidden');
+  }
+  userForm.userId.value = null;
 }
 
 function renderUsers() {
@@ -122,6 +146,45 @@ function renderUsers() {
   </ul>`;
 
   userListContainerElement.innerHTML = html2;
+}
+
+function showUserDetails(id) {
+  hideForm();
+  const user = users.find((user) => Number(user.id) === Number(id));
+  console.log(user);
+
+  const userDetailsElement = document.getElementById('userDetails');
+
+  userDetailsElement.innerHTML = `
+    <div class="user-card-header">
+      <div class="user-avatar">${user.imageUrl ? `<img src="${user.imageUrl}" /alt="${user.firstName} ${user.lastName}">` : ''}</div>
+      <div class="user-info">
+        <h3 class="user-name">${user.firstName} ${user.lastName}</h3>
+        <p class="user-username">@${user.username}</p>
+        <span class="user-category category-${user.category}">${user.category}</span>
+      </div>
+    </div>
+    <div class="user-card-body">
+      <div class="user-detail">
+        <span class="user-detail-label">Förnamn</span>
+        <span class="user-detail-value">${user.firstName}</span>
+      </div>
+      <div class="user-detail">
+        <span class="user-detail-label">Efternamn</span>
+        <span class="user-detail-value">${user.lastName}</span>
+      </div>
+      <div class="user-detail">
+        <span class="user-detail-label">Användarnamn</span>
+        <span class="user-detail-value">${user.username}</span>
+      </div>
+    </div>
+    <div class="user-card-actions">
+      <button type="button" class="btn btn-primary" onclick="showForm(${id})">Redigera</button>
+      <button type="button" class="btn btn-danger" onclick="deleteUser(${id})">Radera</button>
+    </div>
+  `;
+
+  userDetailsElement.classList.remove('hidden');
 }
 
 renderUsers();
