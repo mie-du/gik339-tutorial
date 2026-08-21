@@ -40,6 +40,7 @@ async function renderUsers() {
   const response = await fetch('http://localhost:3000/users');
   const serverUsers = await response.json();
 
+  users.length = 0;
   serverUsers.map((user) => users.push(user));
 
   const userListContainerElement = document.getElementById('userListContainer');
@@ -108,6 +109,45 @@ function showUserDetails(id) {
   `;
 
   userDetailsElement.classList.remove('hidden');
+}
+
+document.getElementById('userForm').addEventListener('submit', saveUser);
+
+function saveUser(e) {
+  e.preventDefault();
+
+  console.log('save user');
+
+  const id = userForm.userId.value;
+  const firstName = userForm.firstName.value;
+  const lastName = userForm.lastName.value;
+  const username = userForm.username.value;
+  const category = userForm.category.value;
+  const imageUrl = userForm.imageUrl.value;
+
+  const user = { id, firstName, lastName, username, category, imageUrl };
+
+  if (id) {
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    }).then(() => {
+      renderUsers();
+      showUserDetails(id);
+    });
+  } else {
+    fetch(`http://localhost:3000/users/}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(user)
+    })
+      .then((result) => result.json())
+      .then((newUser) => {
+        renderUsers();
+        showUserDetails(newUser.id);
+      });
+  }
 }
 
 renderUsers();
