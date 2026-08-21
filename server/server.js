@@ -64,7 +64,7 @@ server.put('/users/:id', (req, res) => {
 
 server.delete('/users/:id', (req, res) => {
   const preparedSQL = db.prepare('DELETE FROM users WHERE id = ?');
-  preparedSQL(req.params.id);
+  preparedSQL.run(req.params.id);
   res.status(200).json({ message: 'Användaren togs bort' });
 });
 
